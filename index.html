@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex, nosnippet">
+    <title>AudioPhile - Where My Collections Becomes My Escape</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/png" href="./Assets/Icons/Favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="./Assets/Icons/Favicon/favicon.svg?v=20260402">
+    <link rel="shortcut icon" href="./Assets/Icons/Favicon/favicon.ico?v=20260402">
+    <link rel="apple-touch-icon" sizes="180x180" href="./Assets/Icons/Favicon/apple-touch-icon.png?v=20260402">
+    <meta name="apple-mobile-web-app-title" content="AudioPhile">
+    <link rel="manifest" href="./Assets/Icons/Favicon/site.webmanifest?v=20260402">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="library">
+                <div class="songlists">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="navbar">
+                <div class="logo">
+                    <img class="invert" width="170" src="Assets/Icons/logo.png" alt="AudioPhile Logo">
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div data-folder="Pop" class="card">
+                    <img src="Assets/Playlist Cover Images/Pop.jpg" alt="Pop">
+                    <h2>Pop</h2>
+                </div>
+                <div data-folder="Dhurandhar" class="card">
+                    <img src="Assets/Playlist Cover Images/Dhurandhar.jpg" alt="Dhurandhar">
+                    <h2>Dhurandhar</h2>
+                </div>
+                <div data-folder="Bhāratīya Film Industry" class="card">
+                    <img src="Assets/Playlist Cover Images/Bhāratīya Film Industry.jpg" alt="Bhāratīya Film Industry">
+                    <h2 class="m">Bhāratīya Film Industry</h2>
+                </div>
+                <div data-folder="Garba" class="card">
+                    <img src="Assets/Playlist Cover Images/Garba.jpg" alt="Garba">
+                    <h2>Garba</h2>
+                </div>
+                <div data-folder="Dharma" class="card">
+                    <img src="Assets/Playlist Cover Images/Dharma.jpg" alt="Dharma">
+                    <h2>Dharma</h2>
+                </div>
+                <div data-folder="Śrī Kṛṣṇa" class="card">
+                    <img src="Assets/Playlist Cover Images/Śrī Kṛṣṇa.jpg" alt="Śrī Kṛṣṇa">
+                    <h2>Śrī Kṛṣṇa</h2>
+                </div>
+            </div>
+            <div class="playbar">
+                <div class="abovebar">
+                    <div class="songinfo-left">
+                        <div class="songinfo_playbar"></div>
+                        <div class="loop-queue">
+                            <img width="22" id="loop-btn" src="Assets/Icons/loop.svg" alt="Loop">
+                            <img width="22" id="queue-btn" src="Assets/Icons/queue.svg" alt="Queue">
+                        </div>
+                    </div>
+                    <div class="center-controls">
+                        <button id="queue-arrow" aria-label="Toggle queue window">
+                            <img src="Assets/Icons/queue-arrow.svg" alt="Toggle Queue">
+                        </button>
+                        <div class="songbuttons">
+                            <img width="35" id="previous" src="Assets/Icons/prevsong.svg" alt="Previous">
+                            <img width="35" id="play" src="Assets/Icons/play.svg" alt="Play">
+                            <img width="35" id="next" src="Assets/Icons/nextsong.svg" alt="Next">
+                        </div>
+                    </div>
+                    <div class="timevolume">
+                        <div class="songtime"></div>
+                        <div class="vol">
+                            <div class="volume">
+                                <img id="volumeIcon" src="Assets/Icons/volume.svg" alt="Volume">
+                            </div>
+                            <div class="volumerange">
+                                <input type="range" min="0" max="100" value="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="queue-panel">
+                    <div class="queue-list"></div>
+                </div>
+                <div class="seekbar">
+                    <div class="seekbar-fill"></div>
+                    <div class="circle"></div>
+                </div>
+                <canvas id="waveform"></canvas>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">Copyright &copy; 2026 AudioPhile</footer>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/sw.js").catch(err => console.error("SW registration failed:", err))
+        }
+    </script>
+</body>
+
+</html>
