@@ -412,7 +412,7 @@ const main = async () => {
     updateVolSlider(volumeInput, lastVolume * 100)
 
     // ── Initial song load ──
-    const defaultFolder = "Śrī Kṛṣṇa"
+    const defaultFolder = "Kṛṣṇa"
     circle.style.left = "0%"
     fill.style.width = "0%"
     songtime.textContent = "00:00 / 00:00"
