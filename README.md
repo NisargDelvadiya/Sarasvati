@@ -1,1 +1,1 @@
-Personal Music-Web PLayer
+Personal Music-Web Player
