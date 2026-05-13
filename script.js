@@ -221,7 +221,7 @@ if (!savedSong) {
     await getSongs(defaultFolder)
     updateSongList()
     if (songs.length) {
-    const firstSong = "Vishnu_Sahasranama_Stotram.mp3"
+    const firstSong = "Visnu_Sahasranama_Stotram.mp3"
     const target = songs.includes(firstSong) ? firstSong : songs[0]
     playMusicInFolder(target, true)
 }
