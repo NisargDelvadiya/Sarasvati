@@ -125,9 +125,11 @@ const _loadTrack = (track, folder, pause) => {
     if (!pause) {
         currentSong.play().catch(err => console.error("Playback error:", err))
         document.querySelector("#play").src = "Assets/Icons/resume.svg"
+        document.querySelector("#play").title = "Pause"
         updateMediaSession(track, folder)
     } else {
         document.querySelector("#play").src = "Assets/Icons/play.svg"
+        document.querySelector("#play").title = "Play"
     }
 }
 
@@ -304,9 +306,11 @@ if (!savedSong) {
         if (currentSong.paused) {
             currentSong.play().catch(err => console.error("Playback error:", err))
             play.src = "Assets/Icons/resume.svg"
+            play.title = "Pause"
         } else {
             currentSong.pause()
             play.src = "Assets/Icons/play.svg"
+            play.title = "Play"
         }
     }
 
@@ -387,19 +391,14 @@ if (!savedSong) {
     })
 
     const playButton = document.getElementById("play")
-if (playButton) {
-    playButton.title = "Play"
-}
     if ("mediaSession" in navigator) {
         navigator.mediaSession.setActionHandler("play", () => {
             currentSong.play().catch(err => console.error("Playback error:", err))
             play.src = "Assets/Icons/resume.svg"
-            play.title = "Pause"
         })
         navigator.mediaSession.setActionHandler("pause", () => {
             currentSong.pause()
             play.src = "Assets/Icons/play.svg"
-            play.title = "Play"
         })
         navigator.mediaSession.setActionHandler("nexttrack", playNextSong)
         navigator.mediaSession.setActionHandler("previoustrack", playPrevSong)
