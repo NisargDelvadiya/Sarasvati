@@ -390,10 +390,12 @@ if (!savedSong) {
         navigator.mediaSession.setActionHandler("play", () => {
             currentSong.play().catch(err => console.error("Playback error:", err))
             play.src = "Assets/Icons/resume.svg"
+            play.title = "Pause"
         })
         navigator.mediaSession.setActionHandler("pause", () => {
             currentSong.pause()
             play.src = "Assets/Icons/play.svg"
+            play.title = "Play"
         })
         navigator.mediaSession.setActionHandler("nexttrack", playNextSong)
         navigator.mediaSession.setActionHandler("previoustrack", playPrevSong)
