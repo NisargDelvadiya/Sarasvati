@@ -386,6 +386,10 @@ if (!savedSong) {
         if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "playing"
     })
 
+    const playButton = document.getElementById("play")
+if (playButton) {
+    playButton.title = "Play"
+}
     if ("mediaSession" in navigator) {
         navigator.mediaSession.setActionHandler("play", () => {
             currentSong.play().catch(err => console.error("Playback error:", err))
