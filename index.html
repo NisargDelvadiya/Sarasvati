@@ -1,68 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex, nosnippet">
-    <title>Sarasvati</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="/Assets/Icons/Favicon/favicon-96x96.png?v=20260514" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/Assets/Icons/Favicon/favicon.svg?v=20260514" />
-    <link rel="shortcut icon" href="/Assets/Icons/Favicon/favicon.ico?v=20260514" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/Assets/Icons/Favicon/apple-touch-icon.png?v=20260514" />
-    <meta name="apple-mobile-web-app-title" content="Sarasvati" />
-    <link rel="manifest" href="/Assets/Icons/Favicon/site.webmanifest?v=20260514" />
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="robots" content="noindex, nosnippet">
+  <meta name="description" content="Sarasvati — a personal music player for devotional and folk music.">
+  <title>Sarasvati</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon set -->
+  <link rel="icon" type="image/png" href="/Assets/Icons/Favicon/favicon-96x96.png?v=20260514" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/Assets/Icons/Favicon/favicon.svg?v=20260514">
+  <link rel="shortcut icon" href="/Assets/Icons/Favicon/favicon.ico?v=20260514">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Assets/Icons/Favicon/apple-touch-icon.png?v=20260514">
+  <meta name="apple-mobile-web-app-title" content="Sarasvati">
+  <link rel="manifest" href="/Assets/Icons/Favicon/site.webmanifest?v=20260514">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
-    <div class="container">
-        <div class="left">
-            <div class="library">
-                <div class="songlists">
-                    <ul></ul>
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="navbar">
-                <div class="logo">Sarasvati</div>
-            </div>
-            <div class="cardcontainer">
-                <div data-folder="Krsna" class="card">
-                    <img src="Assets/Playlist Cover Images/Krsna.jpg" alt="Krsna">
-                    <h2>Krsna</h2>
-                </div>
-                <div data-folder="Garba" class="card">
-                    <img src="Assets/Playlist Cover Images/Garba.jpg" alt="Garba">
-                    <h2>Garba</h2>
-                </div>
-                <div data-folder="Aditya Gadhvi" class="card">
-                    <img src="Assets/Playlist Cover Images/Aditya Gadhvi.jpg" alt="Aditya Gadhvi">
-                    <h2>Aditya Gadhvi</h2>
-                </div>
-                <div data-folder="Laalo" class="card">
-                    <img src="Assets/Playlist Cover Images/Laalo.jpg" alt="Laalo">
-                    <h2>Laalo</h2>
-                </div>
-                <div data-folder="Bharat" class="card">
-                    <img src="Assets/Playlist Cover Images/Bharat.jpg" alt="Bharat">
-                    <h2>Bharat</h2>
-                </div>
-            </div>
-            <div class="playbar">
-                <img width="48" id="play" src="Assets/Icons/play.svg" alt="Play">
-                <canvas id="waveform"></canvas>
-            </div>
-        </div>
-    </div>
-    <footer class="footer">© 2026 Sarasvati • Made with ❤️ in Bharat 🇮🇳 | All Rights are Reserved</footer>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js").catch(err => console.error("SW registration failed:", err))
-        }
-    </script>
-</body>
+  <div class="container">
 
+    <!-- Left sidebar: song list populated by JS -->
+    <div class="left">
+      <div class="library">
+        <div class="songlists"><ul></ul></div>
+      </div>
+    </div>
+
+    <!-- Right panel: navbar, playlist cards, playbar -->
+    <div class="right">
+      <header class="navbar">
+        <div class="logo">Sarasvati</div>
+      </header>
+
+      <main class="cardcontainer">
+        <div data-folder="Krsna" class="card">
+          <img src="Assets/Playlist Cover Images/Krsna.jpg" alt="Krsna playlist cover">
+          <h2>Krsna</h2>
+        </div>
+        <div data-folder="Garba" class="card">
+          <img src="Assets/Playlist Cover Images/Garba.jpg" alt="Garba playlist cover">
+          <h2>Garba</h2>
+        </div>
+        <div data-folder="Aditya Gadhvi" class="card">
+          <img src="Assets/Playlist Cover Images/Aditya Gadhvi.jpg" alt="Aditya Gadhvi playlist cover">
+          <h2>Aditya Gadhvi</h2>
+        </div>
+        <div data-folder="Laalo" class="card">
+          <img src="Assets/Playlist Cover Images/Laalo.jpg" alt="Laalo playlist cover">
+          <h2>Laalo</h2>
+        </div>
+        <div data-folder="Bharat" class="card">
+          <img src="Assets/Playlist Cover Images/Bharat.jpg" alt="Bharat playlist cover">
+          <h2>Bharat</h2>
+        </div>
+      </main>
+
+      <div class="playbar">
+        <img width="48" id="play" src="Assets/Icons/play.svg" alt="Play">
+        <canvas id="waveform"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Draggable YouTube video modal — JS controls open/close/position -->
+  <div id="yt-modal-overlay" class="yt-modal-overlay" aria-hidden="true">
+    <div id="yt-modal" class="yt-modal" role="dialog" aria-label="Video Player">
+      <div class="yt-modal-header" id="yt-modal-header">
+        <span class="yt-modal-title" id="yt-modal-title"></span>
+        <button class="yt-modal-close" id="yt-modal-close" aria-label="Close video">✕</button>
+      </div>
+      <div class="yt-modal-body" id="yt-modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="footer">© 2026 Sarasvati • Made with ❤️ in Bharat 🇮🇳 | All Rights are Reserved</footer>
+
+  <script>
+    // Register service worker for offline capability
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js").catch(err => console.error("SW registration failed:", err))
+    }
+  </script>
+</body>
 </html>
